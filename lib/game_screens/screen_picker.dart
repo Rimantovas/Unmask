@@ -71,6 +71,12 @@ class ScreenPicker extends StatelessWidget {
             }
           },
         ),
+        title: role == "host"
+            ? Text(
+                "Questions left: ${DatabaseServices.questions.length}",
+                style: const TextStyle(fontSize: 15),
+              )
+            : null,
       ),
       body: page,
     );

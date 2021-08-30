@@ -14,48 +14,51 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: const [
-            BoxShadow(
-                color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
-          ],
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: const [0.0, 1.0],
-            colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).colorScheme.secondary,
+    return Material(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: const [
+              BoxShadow(
+                  color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
             ],
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: const [0.0, 1.0],
+              colors: [
+                Theme.of(context).primaryColor,
+                Theme.of(context).colorScheme.secondary,
+              ],
+            ),
+            //color: Colors.deepPurple.shade300,
+            borderRadius: BorderRadius.circular(20),
           ),
-          color: Colors.deepPurple.shade300,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: ElevatedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
+          child: ElevatedButton(
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
               ),
+              elevation: MaterialStateProperty.all(0),
+              minimumSize: MaterialStateProperty.all(Size(width, 50)),
+              backgroundColor: MaterialStateProperty.all(Colors.transparent),
+              shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),
-            minimumSize: MaterialStateProperty.all(Size(width, 50)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            shadowColor: MaterialStateProperty.all(Colors.transparent),
-          ),
-          onPressed: function,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 10,
-              bottom: 10,
-            ),
-            child: Text(
-              text,
-              style: const TextStyle(
-                fontSize: 18,
-                color: Colors.white,
+            onPressed: function,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 10,
+                bottom: 10,
+              ),
+              child: Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),

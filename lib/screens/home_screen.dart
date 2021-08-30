@@ -39,8 +39,11 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //Image.asset('name'),
-            const Text("Unmask", style: TextStyle(fontSize: 70)),
+            Image.asset(
+              'assets/images/logo2.png',
+              fit: BoxFit.fitWidth,
+            ),
+            //const Text("Unmask", style: TextStyle(fontSize: 70)),
 
             CustomButton(
                 function: () {

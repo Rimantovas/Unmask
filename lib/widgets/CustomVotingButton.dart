@@ -34,6 +34,7 @@ class CustomVotingButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<CircleBorder>(const CircleBorder()),
+          elevation: MaterialStateProperty.all(0),
           minimumSize: MaterialStateProperty.all(const Size(100, 100)),
           backgroundColor: MaterialStateProperty.all(Colors.transparent),
           shadowColor: MaterialStateProperty.all(Colors.transparent),

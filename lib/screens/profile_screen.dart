@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unmaskapp/globals.dart';
+import 'package:unmaskapp/widgets/CustomButton.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);
@@ -65,6 +66,10 @@ class ProfileScreen extends StatelessWidget {
                   },
                 ),
               ),
+              Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  child: CustomButton(function: () {}, text: "Change")),
               Expanded(child: Image.asset('assets/images/profile.png'))
             ],
           )),

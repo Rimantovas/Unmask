@@ -14,6 +14,7 @@ class WaitingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     if (role == "host") {
       //atsisiusti visus questions
     }
@@ -37,48 +38,53 @@ class WaitingScreen extends StatelessWidget {
                     : "Start game")
             : null,
         resizeToAvoidBottomInset: false,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-          child: Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Image.asset(
-                  'assets/images/waiting2.png',
-                ),
+        body: Column(
+          children: [
+            SizedBox(
+              height: height * 0.3,
+              child: Image.asset(
+                'assets/images/waiting2.png',
               ),
-              const Text(
-                "ROOM CODE:",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 25),
+            ),
+            const Text(
+              "ROOM CODE:",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 25),
+            ),
+            Center(
+              child: Text(
+                game.id,
+                style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).primaryColor),
               ),
-              Center(
-                child: Text(
-                  game.id,
-                  style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).primaryColor),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Meet the club:",
-                style: TextStyle(fontSize: 25),
-              ),
-              Expanded(
-                child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    //shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: game.players.length,
-                    itemBuilder: (context, index) {
-                      String player = game.players[index];
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Meet the club:",
+              style: TextStyle(fontSize: 25),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Expanded(
+              child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  //shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: game.players.length,
+                  itemBuilder: (context, index) {
+                    String player = game.players[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Align(
+                        alignment: Alignment.topCenter,
                         child: Container(
+                          height: height * 0.15,
+                          width: height * 0.15,
                           decoration: BoxDecoration(
                               boxShadow: const [
                                 BoxShadow(
@@ -91,82 +97,24 @@ class WaitingScreen extends StatelessWidget {
                                 end: Alignment.bottomRight,
                                 stops: const [0.5, 1.0],
                                 colors: [
+                                  //Colors.red,
                                   Theme.of(context).primaryColor,
                                   Theme.of(context).colorScheme.secondary,
                                 ],
                               ),
                               shape: BoxShape.circle),
-                          padding: EdgeInsets.all(15),
+                          padding: EdgeInsets.all(10),
                           child: Center(
-                            child: Text(
+                            child: AutoSizeText(
                               player,
-                              //minFontSize: 25,
+                              minFontSize: 2,
                               maxLines: 1,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25),
                             ),
                           ),
                         ),
-                      );
-                    }),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class AnswerScreen extends StatelessWidget {
-  const AnswerScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final game = Provider.of<Game>(context);
-
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.3,
-              child: Image.asset(
-                'assets/images/waiting2.png',
-              ),
-            ),
-            const Text(
-              "ANSWERS:",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 25),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Meet the club:",
-              style: TextStyle(fontSize: 25),
-            ),
-            Expanded(
-              child: ListView.builder(
-                  itemCount: game.answers.length,
-                  itemBuilder: (context, index) {
-                    String key = game.answers.keys.elementAt(index);
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          key,
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        Text(
-                          game.answers[key]!,
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ],
+                      ),
                     );
                   }),
             )
@@ -176,3 +124,62 @@ class AnswerScreen extends StatelessWidget {
     );
   }
 }
+
+// class AnswerScreen extends StatelessWidget {
+//   const AnswerScreen({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final game = Provider.of<Game>(context);
+
+//     return Scaffold(
+//       resizeToAvoidBottomInset: false,
+//       appBar: AppBar(),
+//       body: Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+//         child: Column(
+//           children: [
+//             SizedBox(
+//               height: MediaQuery.of(context).size.height * 0.3,
+//               child: Image.asset(
+//                 'assets/images/waiting2.png',
+//               ),
+//             ),
+//             const Text(
+//               "ANSWERS:",
+//               textAlign: TextAlign.center,
+//               style: TextStyle(fontSize: 25),
+//             ),
+//             const SizedBox(
+//               height: 20,
+//             ),
+//             Text(
+//               "Meet the club:",
+//               style: TextStyle(fontSize: 25),
+//             ),
+//             Expanded(
+//               child: ListView.builder(
+//                   itemCount: game.answers.length,
+//                   itemBuilder: (context, index) {
+//                     String key = game.answers.keys.elementAt(index);
+//                     return Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                       children: [
+//                         Text(
+//                           key,
+//                           style: TextStyle(fontSize: 20),
+//                         ),
+//                         Text(
+//                           game.answers[key]!,
+//                           style: TextStyle(fontSize: 20),
+//                         ),
+//                       ],
+//                     );
+//                   }),
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

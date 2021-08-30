@@ -11,10 +11,10 @@ class ResultsScreen extends StatelessWidget {
   ResultsScreen({Key? key}) : super(key: key);
 
   final List<Color?> colors = [
+    Colors.green[900],
     Colors.green[400],
-    Colors.green[200],
+    Colors.red[900],
     Colors.red[400],
-    Colors.red[200],
   ];
 
   @override
@@ -41,6 +41,7 @@ class ResultsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: AutoSizeText(
               game.question ?? "No questions left",
+              minFontSize: 2,
               textAlign: TextAlign.center,
               maxLines: 2,
               style: const TextStyle(fontSize: 45),
@@ -54,6 +55,7 @@ class ResultsScreen extends StatelessWidget {
             color1: colors[0],
             color2: colors[1],
             index: 0,
+            showResults: game.showResults,
           ),
           if (game.showResults)
             SizedBox(
@@ -96,9 +98,8 @@ class ResultsScreen extends StatelessWidget {
                         child: Center(
                           child: AutoSizeText(
                             player,
-                            //minFontSize: 25,
+                            minFontSize: 2,
                             maxLines: 1,
-
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 15),
                           ),
@@ -116,6 +117,7 @@ class ResultsScreen extends StatelessWidget {
             color1: colors[2],
             color2: colors[3],
             index: 1,
+            showResults: game.showResults,
           ),
           if (game.showResults)
             SizedBox(
@@ -158,9 +160,8 @@ class ResultsScreen extends StatelessWidget {
                         child: Center(
                           child: AutoSizeText(
                             player,
-                            //minFontSize: 25,
+                            minFontSize: 2,
                             maxLines: 1,
-
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 15),
                           ),

@@ -12,7 +12,7 @@ class VotingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final game = Provider.of<Game>(context);
-    if (game.answers.keys.length == game.players.length) {
+    if (game.answers.keys.length == game.players.length && role == "host") {
       DatabaseServices.changeScreen(game.id, 2);
     }
     return Material(
@@ -25,6 +25,7 @@ class VotingScreen extends StatelessWidget {
               child: AutoSizeText(
                 game.question ?? "No questions left",
                 maxLines: 2,
+                minFontSize: 2,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 45),
               ),
@@ -54,6 +55,13 @@ class VotingScreen extends StatelessWidget {
                         text: vote),
                   )
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 25.0),
+              child: Image.asset(
+                'assets/images/choose.png',
+                fit: BoxFit.fitWidth,
+              ),
             )
           ],
         ),
