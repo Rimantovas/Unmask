@@ -57,57 +57,6 @@ class ResultsScreen extends StatelessWidget {
             index: 0,
             showResults: game.showResults,
           ),
-          if (game.showResults)
-            SizedBox(
-              width: width,
-              height: 100,
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  //shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: game.answers.keys
-                      .where(
-                          (element) => game.answers[element] == game.votes[0])
-                      .length,
-                  itemBuilder: (context, index) {
-                    String player = game.answers.keys
-                        .where(
-                            (element) => game.answers[element] == game.votes[0])
-                        .elementAt(index);
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Colors.black26,
-                                  offset: Offset(0, 4),
-                                  blurRadius: 5.0)
-                            ],
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              stops: const [0.5, 1.0],
-                              colors: [
-                                Theme.of(context).primaryColor,
-                                Theme.of(context).colorScheme.secondary,
-                              ],
-                            ),
-                            shape: BoxShape.circle),
-                        padding: const EdgeInsets.all(5),
-                        child: Center(
-                          child: AutoSizeText(
-                            player,
-                            minFontSize: 2,
-                            maxLines: 1,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-            ),
           if (!game.showResults)
             const SizedBox(
               height: 100,
@@ -119,57 +68,6 @@ class ResultsScreen extends StatelessWidget {
             index: 1,
             showResults: game.showResults,
           ),
-          if (game.showResults)
-            SizedBox(
-              width: width,
-              height: 100,
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  //shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: game.answers.keys
-                      .where(
-                          (element) => game.answers[element] == game.votes[1])
-                      .length,
-                  itemBuilder: (context, index) {
-                    String player = game.answers.keys
-                        .where(
-                            (element) => game.answers[element] == game.votes[1])
-                        .elementAt(index);
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Colors.black26,
-                                  offset: Offset(0, 4),
-                                  blurRadius: 5.0)
-                            ],
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              stops: const [0.5, 1.0],
-                              colors: [
-                                Theme.of(context).primaryColor,
-                                Theme.of(context).colorScheme.secondary,
-                              ],
-                            ),
-                            shape: BoxShape.circle),
-                        padding: const EdgeInsets.all(5),
-                        child: Center(
-                          child: AutoSizeText(
-                            player,
-                            minFontSize: 2,
-                            maxLines: 1,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-            ),
         ],
       ),
     );
