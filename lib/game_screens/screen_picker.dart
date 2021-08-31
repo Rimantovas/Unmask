@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:unmaskapp/database_services.dart';
 import 'package:unmaskapp/game_screens/results_screen.dart';
@@ -72,9 +73,12 @@ class ScreenPicker extends StatelessWidget {
           },
         ),
         title: role == "host"
-            ? Text(
-                "Questions left: ${DatabaseServices.questions.length}",
-                style: const TextStyle(fontSize: 15),
+            ? Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "Questions left: ${DatabaseServices.questions.length}",
+                  style: const TextStyle(fontSize: 15),
+                ),
               )
             : null,
       ),

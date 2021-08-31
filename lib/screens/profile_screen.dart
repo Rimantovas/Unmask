@@ -69,7 +69,23 @@ class ProfileScreen extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   width: MediaQuery.of(context).size.width * 0.6,
-                  child: CustomButton(function: () {}, text: "Change")),
+                  child: CustomButton(
+                      function: () {
+                        if (controller.text != "") {
+                          userName = controller.text;
+                          setUsername(controller.text);
+                          FocusManager.instance.primaryFocus!.unfocus();
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text(
+                              "Name changed",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            duration: Duration(seconds: 1),
+                          ));
+                        }
+                      },
+                      text: "Change")),
               Expanded(child: Image.asset('assets/images/profile.png'))
             ],
           )),
